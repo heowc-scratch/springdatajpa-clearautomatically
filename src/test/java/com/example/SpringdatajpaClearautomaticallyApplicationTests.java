@@ -41,7 +41,7 @@ class SpringdatajpaClearautomaticallyApplicationTests {
         final Member foo = repository.findById(1L).get();
         logger.info("조회된 객체: {}", foo);
         repository.bulkUpdateAndClear("empty");
-        logger.info("bulkUpdate 후 객체(clearAutomatically=false): {}", foo);
+        logger.info("bulkUpdate 후 객체(clearAutomatically=true): {}", foo);
         logger.info("영속성 컨텍스트에 존재여부: {}", entityManager.contains(foo));
         assertThat(foo.getName()).isEqualTo("foo");
         assertThat(entityManager.contains(foo)).isFalse();
@@ -54,7 +54,7 @@ class SpringdatajpaClearautomaticallyApplicationTests {
         final Member foo = repository.findById(1L).get();
         logger.info("조회된 객체: {}", foo);
         repository.bulkUpdate("empty");
-        logger.info("bulkUpdate 후 객체(clearAutomatically=true): {}", foo);
+        logger.info("bulkUpdate 후 객체(clearAutomatically=false): {}", foo);
         logger.info("영속성 컨텍스트에 존재여부: {}", entityManager.contains(foo));
         assertThat(foo.getName()).isEqualTo("foo");
         assertThat(entityManager.contains(foo)).isTrue();
